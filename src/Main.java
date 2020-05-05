@@ -1,8 +1,32 @@
 import java.util.*;
+import java.util.stream.Collectors;
 
 public class Main {
 
     public static void main(String[] args) {
+
+        List<String> listString = Arrays.asList("Java", "Stream", null, "Filter", null);
+        List<String> nonNullResult = listString.stream().filter(Objects::nonNull).collect(Collectors.toList());
+        //nonNullResult.forEach(System.out::println);
+        listString.stream().filter(Objects::nonNull).map(String::length).forEach(System.out::println);
+
+        List<Integer> integers = Arrays.asList(1,2,3, null, 4, null, 5);
+        integers.stream().map(n -> {
+            double r = n != null ? n : 0;
+               return Math.sqrt(r);
+
+        }).forEach(System.out::println);
+
+        integers.stream().map(n -> {
+            double r = 0;
+            if (n!=null) {
+                r = n;
+            } else {
+                r = 0;
+            }
+            return Math.pow(r, 2);
+        }).forEach(System.out::println);
+
 
        basicSet();
        unionIntersectionSet();
